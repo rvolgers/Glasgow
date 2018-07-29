@@ -4,7 +4,7 @@ EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 3
+Sheet 1 4
 Title "Base Board"
 Date ""
 Rev "B"
@@ -14,19 +14,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L MCU_Cypress:CY7C68013A-56LTX U1
-U 1 1 5ACA0321
-P 3200 3850
-F 0 "U1" H 2650 5800 50  0000 C CNN
-F 1 "CY7C68013A-56LTX" H 3700 5800 50  0000 C CNN
-F 2 "Package_DFN_QFN:Cypress_QFN-56-1EP_8x8mm_P0.5mm_EP6.22x6.22mm_ThermalVias" H 3150 3950 50  0001 C CNN
-F 3 "http://www.cypress.com/file/138911/download" H 3200 4050 50  0001 C CNN
-F 4 "Cypress" H 300 -250 50  0001 C CNN "Mfg"
-F 5 "CY7C68013A-56LTXC" H 300 -250 50  0001 C CNN "MPN"
-	1    3200 3850
-	1    0    0    -1  
-$EndComp
 $Comp
 L Connector:USB_B_Micro J1
 U 1 1 5ACA0820
@@ -51,30 +38,6 @@ F 3 "" H 800 4600 50  0001 C CNN
 	1    800  4600
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:GND #PWR016
-U 1 1 5ACA09EE
-P 3200 5950
-F 0 "#PWR016" H 3200 5700 50  0001 C CNN
-F 1 "GND" H 3205 5777 50  0000 C CNN
-F 2 "" H 3200 5950 50  0001 C CNN
-F 3 "" H 3200 5950 50  0001 C CNN
-	1    3200 5950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3000 5850 3000 5900
-Wire Wire Line
-	3000 5900 3200 5900
-Wire Wire Line
-	3400 5900 3400 5850
-Wire Wire Line
-	3200 5850 3200 5900
-Connection ~ 3200 5900
-Wire Wire Line
-	3200 5900 3400 5900
-Wire Wire Line
-	3200 5900 3200 5950
 Wire Wire Line
 	800  4550 800  4600
 $Comp
@@ -89,125 +52,46 @@ F 3 "" H 1950 3350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3.3V #PWR03
-U 1 1 5ACB436E
-P 3200 1750
-F 0 "#PWR03" H 3200 1600 50  0001 C CNN
-F 1 "+3.3V" H 3215 1923 50  0000 C CNN
-F 2 "" H 3200 1750 50  0001 C CNN
-F 3 "" H 3200 1750 50  0001 C CNN
-	1    3200 1750
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3200 1750 3200 1800
-$Comp
-L Device:C C11
-U 1 1 5ACB69D3
-P 1850 2450
-F 0 "C11" V 1700 2450 50  0000 C CNN
-F 1 "18p" V 2000 2450 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad0.99x1.00mm_HandSolder" H 1888 2300 50  0001 C CNN
-F 3 "https://www.mouser.hk/datasheet/2/396/mlcc02_e-1307760.pdf" H 1850 2450 50  0001 C CNN
-F 4 "Yageo" H 300 -250 50  0001 C CNN "Mfg"
-F 5 "CC0603JRNPO8BN180" H 300 -250 50  0001 C CNN "MPN"
-	1    1850 2450
-	0    1    1    0   
-$EndComp
-$Comp
-L power:GND #PWR06
-U 1 1 5ACB6D67
-P 1650 3000
-F 0 "#PWR06" H 1650 2750 50  0001 C CNN
-F 1 "GND" H 1655 2827 50  0000 C CNN
-F 2 "" H 1650 3000 50  0001 C CNN
-F 3 "" H 1650 3000 50  0001 C CNN
-	1    1650 3000
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1650 3000 1650 2950
-Wire Wire Line
-	1650 2450 1700 2450
-Wire Wire Line
-	1700 2950 1650 2950
-Connection ~ 1650 2950
-$Comp
 L Device:R R1
 U 1 1 5ACB7B47
-P 2200 4700
-F 0 "R1" H 2130 4654 50  0000 R CNN
-F 1 "2k2" H 2130 4745 50  0000 R CNN
-F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.99x1.00mm_HandSolder" V 2130 4700 50  0001 C CNN
-F 3 "https://www.mouser.com/datasheet/2/447/PYu-RC_Group_51_RoHS_L_9-1314892.pdf" H 2200 4700 50  0001 C CNN
-F 4 "Yageo" H 300 -250 50  0001 C CNN "Mfg"
-F 5 "RC0603FR-132K2L" H 300 -250 50  0001 C CNN "MPN"
-	1    2200 4700
+P 2200 4750
+F 0 "R1" H 2130 4704 50  0000 R CNN
+F 1 "2k2" H 2130 4795 50  0000 R CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.99x1.00mm_HandSolder" V 2130 4750 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/447/PYu-RC_Group_51_RoHS_L_9-1314892.pdf" H 2200 4750 50  0001 C CNN
+F 4 "Yageo" H 300 -200 50  0001 C CNN "Mfg"
+F 5 "RC0603FR-132K2L" H 300 -200 50  0001 C CNN "MPN"
+	1    2200 4750
 	1    0    0    1   
 $EndComp
 Wire Wire Line
-	2200 4850 2200 4950
-Connection ~ 2200 4950
+	2300 4900 2300 5100
 Wire Wire Line
-	2200 4950 2500 4950
-Connection ~ 2300 5050
+	2200 4600 2200 4550
 Wire Wire Line
-	2300 4850 2300 5050
+	2200 4550 2250 4550
 Wire Wire Line
-	2300 5050 2500 5050
-Wire Wire Line
-	2200 4550 2200 4500
-Wire Wire Line
-	2200 4500 2250 4500
-Wire Wire Line
-	2300 4500 2300 4550
+	2300 4550 2300 4600
 $Comp
 L power:+3.3V #PWR011
 U 1 1 5ACBABAE
-P 2250 4450
-F 0 "#PWR011" H 2250 4300 50  0001 C CNN
-F 1 "+3.3V" H 2265 4623 50  0000 C CNN
-F 2 "" H 2250 4450 50  0001 C CNN
-F 3 "" H 2250 4450 50  0001 C CNN
-	1    2250 4450
+P 2250 4500
+F 0 "#PWR011" H 2250 4350 50  0001 C CNN
+F 1 "+3.3V" H 2265 4673 50  0000 C CNN
+F 2 "" H 2250 4500 50  0001 C CNN
+F 3 "" H 2250 4500 50  0001 C CNN
+	1    2250 4500
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3000 1850 3000 1800
+	2250 4500 2250 4550
+Connection ~ 2250 4550
 Wire Wire Line
-	3000 1800 3200 1800
-Connection ~ 3200 1800
-Wire Wire Line
-	3200 1800 3200 1850
-Wire Wire Line
-	2250 4450 2250 4500
-Connection ~ 2250 4500
-Wire Wire Line
-	2250 4500 2300 4500
-Wire Wire Line
-	1950 4950 2200 4950
-Wire Wire Line
-	1950 5050 2300 5050
-Text Label 1950 4950 0    50   ~ 0
+	2250 4550 2300 4550
+Text Label 2350 5000 0    50   ~ 0
 SDA
-Text Label 1950 5050 0    50   ~ 0
+Text Label 2350 5100 0    50   ~ 0
 SCL
-Wire Wire Line
-	2800 5850 2800 5900
-Wire Wire Line
-	2800 5900 3000 5900
-Connection ~ 3000 5900
-$Comp
-L power:GND #PWR05
-U 1 1 5ACCB418
-P 2400 2700
-F 0 "#PWR05" H 2400 2450 50  0001 C CNN
-F 1 "GND" H 2400 2550 50  0000 C CNN
-F 2 "" H 2400 2700 50  0001 C CNN
-F 3 "" H 2400 2700 50  0001 C CNN
-	1    2400 2700
-	0    -1   -1   0   
-$EndComp
 $Comp
 L Device:R R3
 U 1 1 5ACCF0F2
@@ -245,187 +129,6 @@ F 3 "" H 550 5300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3.3V #PWR08
-U 1 1 5ACD5106
-P 2450 3650
-F 0 "#PWR08" H 2450 3500 50  0001 C CNN
-F 1 "+3.3V" V 2465 3778 50  0000 L CNN
-F 2 "" H 2450 3650 50  0001 C CNN
-F 3 "" H 2450 3650 50  0001 C CNN
-	1    2450 3650
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	2450 3650 2500 3650
-$Comp
-L Device:C C2
-U 1 1 5ACD6C50
-P 1850 1150
-F 0 "C2" H 1965 1196 50  0000 L CNN
-F 1 "u1" H 1965 1105 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad0.99x1.00mm_HandSolder" H 1888 1000 50  0001 C CNN
-F 3 "https://www.mouser.hk/datasheet/2/396/mlcc02_e-1307760.pdf" H 1850 1150 50  0001 C CNN
-F 4 "Taiyo Yuden" H 0   -250 50  0001 C CNN "Mfg"
-F 5 "TMK107BJ154KA-T" H 0   -250 50  0001 C CNN "MPN"
-	1    1850 1150
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1850 1000 1850 950 
-Wire Wire Line
-	1850 950  2150 950 
-Wire Wire Line
-	3650 950  3650 1000
-Wire Wire Line
-	3350 950  3350 1000
-Connection ~ 3350 950 
-Wire Wire Line
-	3050 950  3050 1000
-Connection ~ 3050 950 
-Wire Wire Line
-	2750 950  2750 1000
-Connection ~ 2750 950 
-Wire Wire Line
-	2750 950  3050 950 
-Wire Wire Line
-	2450 950  2450 1000
-Connection ~ 2450 950 
-Wire Wire Line
-	2450 950  2600 950 
-Wire Wire Line
-	2150 950  2150 1000
-Connection ~ 2150 950 
-Wire Wire Line
-	2150 950  2450 950 
-Wire Wire Line
-	1850 1300 1850 1350
-Wire Wire Line
-	1850 1350 2150 1350
-Wire Wire Line
-	3650 1350 3650 1300
-Wire Wire Line
-	2150 1300 2150 1350
-Connection ~ 2150 1350
-Wire Wire Line
-	2150 1350 2450 1350
-Wire Wire Line
-	2450 1300 2450 1350
-Connection ~ 2450 1350
-Wire Wire Line
-	2450 1350 2600 1350
-Wire Wire Line
-	2750 1300 2750 1350
-Connection ~ 2750 1350
-Wire Wire Line
-	2750 1350 3050 1350
-Wire Wire Line
-	3050 1300 3050 1350
-Connection ~ 3050 1350
-Wire Wire Line
-	3350 1300 3350 1350
-Connection ~ 3350 1350
-$Comp
-L Device:C C1
-U 1 1 5ACF0AA9
-P 1450 1150
-F 0 "C1" H 1565 1196 50  0000 L CNN
-F 1 "4u7" H 1565 1105 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad0.99x1.00mm_HandSolder" H 1488 1000 50  0001 C CNN
-F 3 "https://www.mouser.com/datasheet/2/400/lcc_commercial_general_en-837201.pdf" H 1450 1150 50  0001 C CNN
-F 4 "Taiyo Yuden" H 0   -250 50  0001 C CNN "Mfg"
-F 5 "LMK107BJ475KAHT" H 0   -250 50  0001 C CNN "MPN"
-	1    1450 1150
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1850 950  1450 950 
-Wire Wire Line
-	1450 950  1450 1000
-Connection ~ 1850 950 
-Wire Wire Line
-	1850 1350 1450 1350
-Wire Wire Line
-	1450 1350 1450 1300
-Connection ~ 1850 1350
-$Comp
-L Device:C C3
-U 1 1 5ACF711C
-P 2150 1150
-F 0 "C3" H 2265 1196 50  0000 L CNN
-F 1 "u1" H 2265 1105 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad0.99x1.00mm_HandSolder" H 2188 1000 50  0001 C CNN
-F 3 "https://www.mouser.hk/datasheet/2/396/mlcc02_e-1307760.pdf" H 2150 1150 50  0001 C CNN
-F 4 "Taiyo Yuden" H 0   -250 50  0001 C CNN "Mfg"
-F 5 "TMK107BJ154KA-T" H 0   -250 50  0001 C CNN "MPN"
-	1    2150 1150
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C4
-U 1 1 5ACF7152
-P 2450 1150
-F 0 "C4" H 2565 1196 50  0000 L CNN
-F 1 "u1" H 2565 1105 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad0.99x1.00mm_HandSolder" H 2488 1000 50  0001 C CNN
-F 3 "https://www.mouser.hk/datasheet/2/396/mlcc02_e-1307760.pdf" H 2450 1150 50  0001 C CNN
-F 4 "Taiyo Yuden" H 0   -250 50  0001 C CNN "Mfg"
-F 5 "TMK107BJ154KA-T" H 0   -250 50  0001 C CNN "MPN"
-	1    2450 1150
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C5
-U 1 1 5ACF7188
-P 2750 1150
-F 0 "C5" H 2865 1196 50  0000 L CNN
-F 1 "u1" H 2865 1105 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad0.99x1.00mm_HandSolder" H 2788 1000 50  0001 C CNN
-F 3 "https://www.mouser.hk/datasheet/2/396/mlcc02_e-1307760.pdf" H 2750 1150 50  0001 C CNN
-F 4 "Taiyo Yuden" H 0   -250 50  0001 C CNN "Mfg"
-F 5 "TMK107BJ154KA-T" H 0   -250 50  0001 C CNN "MPN"
-	1    2750 1150
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C6
-U 1 1 5ACF71C9
-P 3050 1150
-F 0 "C6" H 3165 1196 50  0000 L CNN
-F 1 "u1" H 3165 1105 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad0.99x1.00mm_HandSolder" H 3088 1000 50  0001 C CNN
-F 3 "https://www.mouser.hk/datasheet/2/396/mlcc02_e-1307760.pdf" H 3050 1150 50  0001 C CNN
-F 4 "Taiyo Yuden" H 0   -250 50  0001 C CNN "Mfg"
-F 5 "TMK107BJ154KA-T" H 0   -250 50  0001 C CNN "MPN"
-	1    3050 1150
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C7
-U 1 1 5ACF720B
-P 3350 1150
-F 0 "C7" H 3465 1196 50  0000 L CNN
-F 1 "u1" H 3465 1105 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad0.99x1.00mm_HandSolder" H 3388 1000 50  0001 C CNN
-F 3 "https://www.mouser.hk/datasheet/2/396/mlcc02_e-1307760.pdf" H 3350 1150 50  0001 C CNN
-F 4 "Taiyo Yuden" H 0   -250 50  0001 C CNN "Mfg"
-F 5 "TMK107BJ154KA-T" H 0   -250 50  0001 C CNN "MPN"
-	1    3350 1150
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C9
-U 1 1 5ACF72A1
-P 3650 1150
-F 0 "C9" H 3765 1196 50  0000 L CNN
-F 1 "u1" H 3765 1105 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad0.99x1.00mm_HandSolder" H 3688 1000 50  0001 C CNN
-F 3 "https://www.mouser.hk/datasheet/2/396/mlcc02_e-1307760.pdf" H 3650 1150 50  0001 C CNN
-F 4 "Taiyo Yuden" H 0   -250 50  0001 C CNN "Mfg"
-F 5 "TMK107BJ154KA-T" H 0   -250 50  0001 C CNN "MPN"
-	1    3650 1150
-	1    0    0    -1  
-$EndComp
-$Comp
 L Device:C C13
 U 1 1 5ACF7322
 P 550 5050
@@ -439,65 +142,16 @@ F 5 "TMK107BJ154KA-T" H -250 0   50  0001 C CNN "MPN"
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:+3.3V #PWR01
-U 1 1 5ACF96C5
-P 2600 900
-F 0 "#PWR01" H 2600 750 50  0001 C CNN
-F 1 "+3.3V" H 2615 1073 50  0000 C CNN
-F 2 "" H 2600 900 50  0001 C CNN
-F 3 "" H 2600 900 50  0001 C CNN
-	1    2600 900 
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2600 900  2600 950 
-Connection ~ 2600 950 
-Wire Wire Line
-	2600 950  2750 950 
-$Comp
-L power:GND #PWR02
-U 1 1 5ACFB88D
-P 2600 1400
-F 0 "#PWR02" H 2600 1150 50  0001 C CNN
-F 1 "GND" H 2605 1227 50  0000 C CNN
-F 2 "" H 2600 1400 50  0001 C CNN
-F 3 "" H 2600 1400 50  0001 C CNN
-	1    2600 1400
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2600 1400 2600 1350
-Connection ~ 2600 1350
-Wire Wire Line
-	2600 1350 2750 1350
-$Comp
-L Device:C C12
-U 1 1 5AD0B949
-P 1850 2950
-F 0 "C12" V 1700 2950 50  0000 C CNN
-F 1 "18p" V 2000 2950 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad0.99x1.00mm_HandSolder" H 1888 2800 50  0001 C CNN
-F 3 "https://www.mouser.hk/datasheet/2/396/mlcc02_e-1307760.pdf" H 1850 2950 50  0001 C CNN
-F 4 "Yageo" H 300 -250 50  0001 C CNN "Mfg"
-F 5 "CC0603JRNPO8BN180" H 300 -250 50  0001 C CNN "MPN"
-	1    1850 2950
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	2050 3550 2450 3550
-Text Label 2050 3550 0    50   ~ 0
-~CY_RESET
-$Comp
 L Device:R R2
 U 1 1 5AD252CA
-P 2300 4700
-F 0 "R2" H 2230 4654 50  0000 R CNN
-F 1 "2k2" H 2230 4745 50  0000 R CNN
-F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.99x1.00mm_HandSolder" V 2230 4700 50  0001 C CNN
-F 3 "https://www.mouser.com/datasheet/2/447/PYu-RC_Group_51_RoHS_L_9-1314892.pdf" H 2300 4700 50  0001 C CNN
-F 4 "Yageo" H 300 -250 50  0001 C CNN "Mfg"
-F 5 "RC0603FR-132K2L" H 300 -250 50  0001 C CNN "MPN"
-	1    2300 4700
+P 2300 4750
+F 0 "R2" H 2230 4704 50  0000 R CNN
+F 1 "2k2" H 2230 4795 50  0000 R CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.99x1.00mm_HandSolder" V 2230 4750 50  0001 C CNN
+F 3 "https://www.mouser.com/datasheet/2/447/PYu-RC_Group_51_RoHS_L_9-1314892.pdf" H 2300 4750 50  0001 C CNN
+F 4 "Yageo" H 300 -200 50  0001 C CNN "Mfg"
+F 5 "RC0603FR-132K2L" H 300 -200 50  0001 C CNN "MPN"
+	1    2300 4750
 	-1   0    0    1   
 $EndComp
 $Comp
@@ -841,151 +495,12 @@ Wire Wire Line
 Wire Wire Line
 	550  5250 550  5300
 Connection ~ 550  5250
-$Comp
-L Device:C C10
-U 1 1 5AD97C38
-P 3950 1150
-F 0 "C10" H 4065 1196 50  0000 L CNN
-F 1 "u1" H 4065 1105 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad0.99x1.00mm_HandSolder" H 3988 1000 50  0001 C CNN
-F 3 "https://www.mouser.hk/datasheet/2/396/mlcc02_e-1307760.pdf" H 3950 1150 50  0001 C CNN
-F 4 "Taiyo Yuden" H 0   -250 50  0001 C CNN "Mfg"
-F 5 "TMK107BJ154KA-T" H 0   -250 50  0001 C CNN "MPN"
-	1    3950 1150
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3950 1000 3950 950 
-Wire Wire Line
-	3950 950  3650 950 
-Connection ~ 3650 950 
-Wire Wire Line
-	3950 1300 3950 1350
-Wire Wire Line
-	3950 1350 3650 1350
-Connection ~ 3650 1350
 Text Label 750  4850 0    50   ~ 0
 SHLD
 Text Label 2100 4150 0    50   ~ 0
 USB_P
 Text Label 2100 4250 0    50   ~ 0
 USB_N
-Text Label 2200 2450 0    50   ~ 0
-XTALOUT
-Text Label 2200 2950 0    50   ~ 0
-XTALIN
-Text Label 3950 2050 0    50   ~ 0
-D0
-Text Label 3950 2150 0    50   ~ 0
-D1
-Text Label 3950 2250 0    50   ~ 0
-D2
-Text Label 3950 2350 0    50   ~ 0
-D3
-Text Label 3950 2450 0    50   ~ 0
-D4
-Text Label 3950 2550 0    50   ~ 0
-D5
-Text Label 3950 2650 0    50   ~ 0
-D6
-Text Label 3950 2750 0    50   ~ 0
-D7
-Text Label 3950 3750 0    50   ~ 0
-RD
-Text Label 3950 3850 0    50   ~ 0
-WR
-Text Label 3950 4350 0    50   ~ 0
-FLAGA
-Text Label 3950 4450 0    50   ~ 0
-FLAGB
-Text Label 3950 4550 0    50   ~ 0
-FLAGC
-Text Label 3950 4950 0    50   ~ 0
-OE
-Text Label 3950 5150 0    50   ~ 0
-A0
-Text Label 3950 5250 0    50   ~ 0
-A1
-Text Label 3950 5350 0    50   ~ 0
-PKTEND
-Entry Wire Line
-	4250 2050 4350 2150
-Entry Wire Line
-	4250 2150 4350 2250
-Entry Wire Line
-	4250 2250 4350 2350
-Entry Wire Line
-	4250 2350 4350 2450
-Entry Wire Line
-	4250 2450 4350 2550
-Entry Wire Line
-	4250 2550 4350 2650
-Entry Wire Line
-	4250 2650 4350 2750
-Entry Wire Line
-	4250 2750 4350 2850
-Entry Wire Line
-	4250 3750 4350 3850
-Entry Wire Line
-	4250 3850 4350 3950
-Entry Wire Line
-	4250 4050 4350 4150
-Entry Wire Line
-	4250 4350 4350 4450
-Entry Wire Line
-	4250 4450 4350 4550
-Entry Wire Line
-	4250 4550 4350 4650
-Entry Wire Line
-	4250 5450 4350 5550
-Entry Wire Line
-	4250 4950 4350 5050
-Entry Wire Line
-	4250 5150 4350 5250
-Entry Wire Line
-	4250 5250 4350 5350
-Entry Wire Line
-	4250 5350 4350 5450
-Wire Wire Line
-	3900 2150 4250 2150
-Wire Wire Line
-	3900 2250 4250 2250
-Wire Wire Line
-	3900 2350 4250 2350
-Wire Wire Line
-	3900 2450 4250 2450
-Wire Wire Line
-	3900 2550 4250 2550
-Wire Wire Line
-	3900 2650 4250 2650
-Wire Wire Line
-	3900 2750 4250 2750
-Wire Wire Line
-	3900 3750 4250 3750
-Wire Wire Line
-	3900 3850 4250 3850
-Wire Wire Line
-	3900 4050 4250 4050
-Wire Wire Line
-	3900 4350 4250 4350
-Wire Wire Line
-	3900 4450 4250 4450
-Wire Wire Line
-	3900 4550 4250 4550
-Wire Wire Line
-	3900 5450 4250 5450
-Wire Wire Line
-	3900 4950 4250 4950
-Wire Wire Line
-	3900 5150 4250 5150
-Wire Wire Line
-	3900 5250 4250 5250
-Wire Wire Line
-	3900 5350 4250 5350
-Text Label 3950 5450 0    50   ~ 0
-FLAGD
-Text Label 3950 4050 0    50   ~ 0
-CLKIF
 $Comp
 L FPGA_Lattice:ICE40UP5K-SG48ITR U4
 U 1 1 5ADBCDAC
@@ -1060,19 +575,9 @@ Wire Wire Line
 Wire Wire Line
 	6550 3850 6200 3850
 Entry Wire Line
-	6550 2550 6650 2650
-Entry Wire Line
-	6550 2650 6650 2750
-Entry Wire Line
-	6550 2750 6650 2850
-Entry Wire Line
-	6550 2850 6650 2950
-Entry Wire Line
 	6550 2950 6650 3050
 Entry Wire Line
 	6550 3150 6650 3250
-Entry Wire Line
-	6550 3250 6650 3350
 Entry Wire Line
 	6550 3350 6650 3450
 Entry Wire Line
@@ -1166,20 +671,6 @@ F 3 "" H 5800 4150 50  0001 C CNN
 	1    5800 4150
 	0    1    1    0   
 $EndComp
-Entry Wire Line
-	6550 4700 6650 4800
-Entry Wire Line
-	6550 4800 6650 4900
-Entry Wire Line
-	6550 4900 6650 5000
-Entry Wire Line
-	6550 5000 6650 5100
-Entry Wire Line
-	6550 5200 6650 5300
-Entry Wire Line
-	6550 5300 6650 5400
-Entry Wire Line
-	6550 5400 6650 5500
 Wire Wire Line
 	6200 3650 6550 3650
 Wire Wire Line
@@ -1187,8 +678,6 @@ Wire Wire Line
 Connection ~ 700  4850
 Text Label 6650 2250 2    50   ~ 0
 ~FPGA_RESET
-Text Label 5150 2250 2    50   ~ 0
-FPGA_DONE
 Wire Wire Line
 	6200 2250 6650 2250
 $Sheet
@@ -1385,8 +874,6 @@ Text Label 9300 4250 0    50   ~ 0
 QB6
 Text Label 9300 4350 0    50   ~ 0
 QB7
-Wire Wire Line
-	6550 3050 6750 3250
 Entry Wire Line
 	7900 4350 8000 4450
 Text Label 6250 3050 0    50   ~ 0
@@ -1434,8 +921,6 @@ Text Label 7700 3800 0    50   ~ 0
 QA2
 Text Label 7700 3600 0    50   ~ 0
 QA1
-Wire Wire Line
-	6550 5100 6750 5300
 Entry Wire Line
 	7900 4450 8000 4550
 Text Label 6250 5100 0    50   ~ 0
@@ -1924,37 +1409,6 @@ F 5 "LMK107BJ475KAHT" H 0   0   50  0001 C CNN "MPN"
 	1    10800 6050
 	1    0    0    -1  
 $EndComp
-$Comp
-L Device:R R4
-U 1 1 5B69214E
-P 2450 3350
-F 0 "R4" H 2380 3304 50  0000 R CNN
-F 1 "100k" H 2380 3395 50  0000 R CNN
-F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.99x1.00mm_HandSolder" V 2380 3350 50  0001 C CNN
-F 3 "" H 2450 3350 50  0001 C CNN
-F 4 "Yageo" H 300 -250 50  0001 C CNN "Mfg"
-F 5 "RC0603FR-10100KL" H 300 -250 50  0001 C CNN "MPN"
-	1    2450 3350
-	1    0    0    1   
-$EndComp
-$Comp
-L power:+3.3V #PWR028
-U 1 1 5B6922E1
-P 2450 3150
-F 0 "#PWR028" H 2450 3000 50  0001 C CNN
-F 1 "+3.3V" H 2150 3200 50  0000 L CNN
-F 2 "" H 2450 3150 50  0001 C CNN
-F 3 "" H 2450 3150 50  0001 C CNN
-	1    2450 3150
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2450 3150 2450 3200
-Wire Wire Line
-	2450 3550 2450 3500
-Connection ~ 2450 3550
-Wire Wire Line
-	2450 3550 2500 3550
 Wire Bus Line
 	8000 4800 9650 4800
 $Comp
@@ -2044,52 +1498,8 @@ Text Label 6250 4800 0    50   ~ 0
 RD
 Text Label 6250 4700 0    50   ~ 0
 WR
-Text Label 5000 3150 2    50   ~ 0
-~FPGA_RESET
-$Comp
-L Device:R R9
-U 1 1 5B9B5966
-P 4700 3300
-F 0 "R9" V 4600 3250 50  0000 C CNN
-F 1 "100k" V 4700 3300 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.99x1.00mm_HandSolder" V 4630 3300 50  0001 C CNN
-F 3 "" H 4700 3300 50  0001 C CNN
-F 4 "Yageo" H 300 -250 50  0001 C CNN "Mfg"
-F 5 "RC0603FR-10100KL" H 300 -250 50  0001 C CNN "MPN"
-	1    4700 3300
-	0    1    1    0   
-$EndComp
-$Comp
-L power:GND #PWR0113
-U 1 1 5BA06172
-P 4900 3300
-F 0 "#PWR0113" H 4900 3050 50  0001 C CNN
-F 1 "GND" H 4950 3150 50  0000 C CNN
-F 2 "" H 4900 3300 50  0001 C CNN
-F 3 "" H 4900 3300 50  0001 C CNN
-	1    4900 3300
-	0    -1   -1   0   
-$EndComp
-Entry Wire Line
-	4250 4150 4350 4250
-Wire Wire Line
-	4250 4150 3900 4150
-Text Label 3950 4150 0    50   ~ 0
-CLKREF
 Text Label 6250 4900 0    50   ~ 0
 CLKREF
-Wire Wire Line
-	4900 3300 4850 3300
-Wire Wire Line
-	4500 3300 4500 3150
-Wire Wire Line
-	3900 5050 4250 5050
-Wire Wire Line
-	4250 5050 4450 5250
-Text Label 5000 5500 2    50   ~ 0
-FPGA_DONE
-Wire Wire Line
-	4550 3300 4500 3300
 Wire Wire Line
 	8400 2700 8700 2700
 Wire Wire Line
@@ -2110,8 +1520,6 @@ Text Label 1100 3900 1    50   ~ 0
 VUSB
 Wire Wire Line
 	900  2700 900  2600
-Wire Wire Line
-	3900 2050 4250 2050
 $Comp
 L Connector_Generic:Conn_01x02 J4
 U 1 1 5AD91BD1
@@ -2175,40 +1583,6 @@ Wire Wire Line
 Connection ~ 10350 2750
 Wire Wire Line
 	10350 2750 10400 2750
-Wire Wire Line
-	3900 3550 4250 3550
-Text Label 5000 4000 2    50   ~ 0
-~OEQ
-$Comp
-L Device:R R11
-U 1 1 5AD68AC5
-P 4700 4150
-F 0 "R11" V 4600 4250 50  0000 R CNN
-F 1 "100k" V 4700 4250 50  0000 R CNN
-F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.99x1.00mm_HandSolder" V 4630 4150 50  0001 C CNN
-F 3 "" H 4700 4150 50  0001 C CNN
-F 4 "Yageo" H 300 -250 50  0001 C CNN "Mfg"
-F 5 "RC0603FR-10100KL" H 300 -250 50  0001 C CNN "MPN"
-	1    4700 4150
-	0    -1   1    0   
-$EndComp
-Wire Wire Line
-	4550 4150 4500 4150
-Wire Wire Line
-	4500 4150 4500 4000
-$Comp
-L power:+3.3V #PWR0114
-U 1 1 5AD80D63
-P 4900 4150
-F 0 "#PWR0114" H 4900 4000 50  0001 C CNN
-F 1 "+3.3V" H 4900 4300 50  0000 C CNN
-F 2 "" H 4900 4150 50  0001 C CNN
-F 3 "" H 4900 4150 50  0001 C CNN
-	1    4900 4150
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	4850 4150 4900 4150
 $Comp
 L Connector:Test_Point TP1
 U 1 1 5ADB3D1E
@@ -2262,22 +1636,6 @@ Text Label 8400 3650 0    50   ~ 0
 ~OEQ
 Wire Wire Line
 	10300 5750 10800 5750
-Wire Wire Line
-	3900 3050 4300 3050
-Wire Wire Line
-	4300 3150 3900 3150
-Wire Wire Line
-	4300 3250 3900 3250
-Wire Wire Line
-	4300 3350 3900 3350
-Text Label 4300 3050 2    50   ~ 0
-LED_CY
-Text Label 4300 3150 2    50   ~ 0
-LED_FPGA
-Text Label 4300 3250 2    50   ~ 0
-LED_ACT
-Text Label 4300 3350 2    50   ~ 0
-LED_ERR
 $Comp
 L Device:LED D1
 U 1 1 5B095C2B
@@ -2490,49 +1848,6 @@ F 5 "RC0603FR-132K2L" H 0   0   50  0001 C CNN "MPN"
 	0    -1   1    0   
 $EndComp
 Wire Wire Line
-	3900 4850 4250 4850
-Wire Wire Line
-	4450 4950 4500 4950
-Text Label 5000 4950 2    50   ~ 0
-~ALERT
-Wire Wire Line
-	4450 5250 4450 5500
-Wire Wire Line
-	4450 5500 5000 5500
-$Comp
-L Device:R R17
-U 1 1 5B4B69B8
-P 4700 5050
-F 0 "R17" V 4600 5100 50  0000 C CNN
-F 1 "100k" V 4700 5050 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.99x1.00mm_HandSolder" V 4630 5050 50  0001 C CNN
-F 3 "" H 4700 5050 50  0001 C CNN
-F 4 "Yageo" H 300 -250 50  0001 C CNN "Mfg"
-F 5 "RC0603FR-10100KL" H 300 -250 50  0001 C CNN "MPN"
-	1    4700 5050
-	0    -1   -1   0   
-$EndComp
-$Comp
-L power:+3.3V #PWR0121
-U 1 1 5B4B6AF3
-P 4900 5050
-F 0 "#PWR0121" H 4900 4900 50  0001 C CNN
-F 1 "+3.3V" H 4915 5223 50  0000 C CNN
-F 2 "" H 4900 5050 50  0001 C CNN
-F 3 "" H 4900 5050 50  0001 C CNN
-	1    4900 5050
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	4850 5050 4900 5050
-Wire Wire Line
-	4500 4950 4500 5050
-Wire Wire Line
-	4500 5050 4550 5050
-Connection ~ 4500 4950
-Wire Wire Line
-	4500 4950 5000 4950
-Wire Wire Line
 	10450 900  10450 1100
 Connection ~ 10450 1100
 Wire Wire Line
@@ -2607,14 +1922,6 @@ F 3 "" H 1950 7000 50  0001 C CNN
 $EndComp
 Text Notes 1650 7200 0    50   ~ 0
 Stencil alignment
-Wire Wire Line
-	3900 2950 4250 2950
-Wire Wire Line
-	4250 2950 4450 3150
-Text Label 4250 4850 2    50   ~ 0
-FLAGD
-Text Notes 4400 4800 0    50   ~ 0
-Alternate use for\nFLAGD pin: INT1
 Text Notes 6600 6450 0    50   ~ 0
 Turn on at VBUS >4.5V
 Text Notes 3550 7650 0    50   ~ 0
@@ -2659,84 +1966,6 @@ Text Label 8400 2550 0    50   ~ 0
 ~ALERT
 Text Label 8400 3750 0    50   ~ 0
 ENVB
-Wire Wire Line
-	4450 4000 4500 4000
-Connection ~ 4500 4000
-Wire Wire Line
-	4500 4000 5000 4000
-Wire Wire Line
-	4250 3550 4450 3750
-Wire Wire Line
-	4450 3750 4450 4000
-Wire Wire Line
-	3900 3450 4250 3450
-Wire Wire Line
-	4250 3450 4450 3650
-Wire Wire Line
-	3900 2850 4250 2850
-Wire Wire Line
-	4250 2850 4450 3050
-$Comp
-L Device:R R19
-U 1 1 5B0699A3
-P 4700 3800
-F 0 "R19" V 4600 3900 50  0000 R CNN
-F 1 "100k" V 4700 3900 50  0000 R CNN
-F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.99x1.00mm_HandSolder" V 4630 3800 50  0001 C CNN
-F 3 "" H 4700 3800 50  0001 C CNN
-F 4 "Yageo" H 300 -250 50  0001 C CNN "Mfg"
-F 5 "RC0603FR-10100KL" H 300 -250 50  0001 C CNN "MPN"
-	1    4700 3800
-	0    -1   1    0   
-$EndComp
-Wire Wire Line
-	4850 3800 4900 3800
-$Comp
-L Device:R R18
-U 1 1 5B08BF5D
-P 4700 2950
-F 0 "R18" V 4600 3050 50  0000 R CNN
-F 1 "100k" V 4700 3050 50  0000 R CNN
-F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.99x1.00mm_HandSolder" V 4630 2950 50  0001 C CNN
-F 3 "" H 4700 2950 50  0001 C CNN
-F 4 "Yageo" H 300 -250 50  0001 C CNN "Mfg"
-F 5 "RC0603FR-10100KL" H 300 -250 50  0001 C CNN "MPN"
-	1    4700 2950
-	0    -1   1    0   
-$EndComp
-Wire Wire Line
-	4850 2950 4900 2950
-Wire Wire Line
-	4550 3800 4500 3800
-Wire Wire Line
-	4450 3650 4500 3650
-Text Label 5000 3650 2    50   ~ 0
-ENVB
-Wire Wire Line
-	4500 3800 4500 3650
-Connection ~ 4500 3650
-Wire Wire Line
-	4500 3650 5000 3650
-Wire Wire Line
-	4450 2800 4500 2800
-Wire Wire Line
-	4500 2950 4500 2800
-Connection ~ 4500 2800
-Wire Wire Line
-	4500 2800 5000 2800
-Wire Wire Line
-	4500 2950 4550 2950
-Wire Wire Line
-	4450 3150 4500 3150
-Connection ~ 4500 3150
-Wire Wire Line
-	4500 3150 5000 3150
-Wire Wire Line
-	4450 2800 4450 3050
-Text Label 5000 2800 2    50   ~ 0
-ENVA
-Text Notes 4450 3500 0    50   ~ 0
-FPGA reset asserted\non tristate
 Text Label 7550 950  0    50   ~ 0
 VCCPLL
 $Comp
@@ -2771,8 +2000,6 @@ Text Notes 3500 6400 0    50   ~ 0
 Imax @ 3V3 = 5 mA
 Text Notes 5550 6400 0    50   ~ 0
 Imax @ 3V3 = 3 mA
-Text Notes 3300 1850 0    50   ~ 0
-Imax(USB) @ 3V3 = 80 mA\nImax @ 3V3 = 209 mA
 Text Notes 8450 2100 0    50   ~ 0
 Imax @ 3V3 = 38 mA (A+B)\nImax @ 5V = 150 mA (A+B)
 Wire Wire Line
@@ -2794,137 +2021,29 @@ NoConn ~ 8600 3050
 $Comp
 L Connector:Test_Point TP4
 U 1 1 5AE223CE
-P 2200 5150
-F 0 "TP4" H 2150 5400 50  0000 L CNN
-F 1 "SDA" V 2304 5224 50  0001 C CNN
-F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 2400 5150 50  0001 C CNN
-F 3 "~" H 2400 5150 50  0001 C CNN
-	1    2200 5150
+P 2200 5200
+F 0 "TP4" H 2150 5450 50  0000 L CNN
+F 1 "SDA" V 2304 5274 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 2400 5200 50  0001 C CNN
+F 3 "~" H 2400 5200 50  0001 C CNN
+	1    2200 5200
 	-1   0    0    1   
 $EndComp
 $Comp
 L Connector:Test_Point TP5
 U 1 1 5AE22A82
-P 2300 5150
-F 0 "TP5" H 2250 5400 50  0000 C CNN
-F 1 "SCL" V 2404 5224 50  0001 C CNN
-F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 2500 5150 50  0001 C CNN
-F 3 "~" H 2500 5150 50  0001 C CNN
-	1    2300 5150
+P 2300 5200
+F 0 "TP5" H 2250 5450 50  0000 C CNN
+F 1 "SCL" V 2404 5274 50  0001 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 2500 5200 50  0001 C CNN
+F 3 "~" H 2500 5200 50  0001 C CNN
+	1    2300 5200
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	2200 4950 2200 5150
-Wire Wire Line
-	2300 5150 2300 5050
-$Comp
-L Connector:Test_Point TP6
-U 1 1 5AE93638
-P 4950 5700
-F 0 "TP6" V 4950 5887 50  0000 L CNN
-F 1 "CLKREF" V 5054 5774 50  0001 C CNN
-F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 5150 5700 50  0001 C CNN
-F 3 "~" H 5150 5700 50  0001 C CNN
-	1    4950 5700
-	0    1    1    0   
-$EndComp
-Entry Wire Line
-	4550 5600 4650 5700
-Wire Wire Line
-	4950 5700 4650 5700
-Text Label 4700 5700 0    50   ~ 0
-CLKREF
-Wire Wire Line
-	3900 4750 4250 4750
-Wire Wire Line
-	4250 4750 4450 4950
-Wire Wire Line
-	3350 950  3650 950 
-Wire Wire Line
-	3350 1350 3650 1350
-Wire Wire Line
-	3050 950  3350 950 
-Wire Wire Line
-	3050 1350 3350 1350
+	2300 5200 2300 5100
 Text Notes 6950 4550 0    50   ~ 0
 Addr: 0001000
-$Comp
-L Device:Crystal_GND24 Y1
-U 1 1 5ACC4BC0
-P 2100 2700
-F 0 "Y1" V 2250 2550 50  0000 L CNN
-F 1 "24M" V 2000 2400 50  0000 L TNN
-F 2 "Crystals:Crystal_SMD_3225-4pin_3.2x2.5mm" H 2100 2700 50  0001 C CNN
-F 3 "https://www.mouser.com/datasheet/2/741/LFXTAL058124Reel-940455.pdf" H 2100 2700 50  0001 C CNN
-F 4 "IQD" H 300 -250 50  0001 C CNN "Mfg"
-F 5 "LFXTAL058124REEL" H 300 -250 50  0001 C CNN "MPN"
-	1    2100 2700
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	1650 2450 1650 2700
-Wire Wire Line
-	2000 2450 2100 2450
-Wire Wire Line
-	2000 2950 2100 2950
-Connection ~ 2100 2450
-Wire Wire Line
-	2100 2450 2500 2450
-Wire Wire Line
-	1900 2700 1650 2700
-Connection ~ 1650 2700
-Wire Wire Line
-	1650 2700 1650 2950
-Connection ~ 2100 2950
-Wire Wire Line
-	2100 2950 2500 2950
-Wire Wire Line
-	2300 2700 2400 2700
-$Comp
-L power:GND #PWR0123
-U 1 1 5B100C0C
-P 4900 2950
-F 0 "#PWR0123" H 4900 2700 50  0001 C CNN
-F 1 "GND" H 4950 2800 50  0000 C CNN
-F 2 "" H 4900 2950 50  0001 C CNN
-F 3 "" H 4900 2950 50  0001 C CNN
-	1    4900 2950
-	0    -1   -1   0   
-$EndComp
-$Comp
-L power:GND #PWR0124
-U 1 1 5B100FC0
-P 4900 3800
-F 0 "#PWR0124" H 4900 3550 50  0001 C CNN
-F 1 "GND" H 4950 3650 50  0000 C CNN
-F 2 "" H 4900 3800 50  0001 C CNN
-F 3 "" H 4900 3800 50  0001 C CNN
-	1    4900 3800
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Connector:Test_Point TP7
-U 1 1 5B12B6CA
-P 4950 5800
-F 0 "TP7" V 4950 5987 50  0000 L CNN
-F 1 "3V3" V 5054 5874 50  0001 C CNN
-F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 5150 5800 50  0001 C CNN
-F 3 "~" H 5150 5800 50  0001 C CNN
-	1    4950 5800
-	0    1    1    0   
-$EndComp
-Entry Wire Line
-	4450 5600 4550 5700
-Wire Wire Line
-	4550 5700 4650 5800
-Wire Wire Line
-	4650 5800 4950 5800
-Text Label 4700 5800 0    50   ~ 0
-CLKIF
-Wire Wire Line
-	2100 2450 2100 2550
-Wire Wire Line
-	2100 2850 2100 2950
 Text Notes 5950 6700 0    50   ~ 0
 FX2_MEM
 Text Notes 3900 6700 0    50   ~ 0
@@ -3007,21 +2126,13 @@ Wire Wire Line
 	1100 3200 1100 3500
 Connection ~ 1100 3500
 Wire Wire Line
-	1900 4250 2500 4250
-Wire Wire Line
 	1100 4250 1900 4250
-Connection ~ 1900 4250
 Wire Wire Line
 	1900 3700 1900 4250
 Wire Wire Line
-	1950 4150 2500 4150
-Wire Wire Line
 	1100 4150 1950 4150
-Connection ~ 1950 4150
 Wire Wire Line
 	1950 3600 1950 4150
-Wire Wire Line
-	4700 2250 5200 2250
 Wire Wire Line
 	5700 1850 5700 1800
 Wire Wire Line
@@ -3062,14 +2173,107 @@ Wire Wire Line
 Connection ~ 5450 1350
 Wire Wire Line
 	5450 1350 5600 1350
+Wire Wire Line
+	1950 4150 2950 4150
+Connection ~ 1950 4150
+Wire Wire Line
+	2950 4250 1900 4250
+Connection ~ 1900 4250
+Connection ~ 2300 5100
+Connection ~ 2200 5000
+Wire Wire Line
+	2200 5000 2200 5200
+Wire Wire Line
+	2200 4900 2200 5000
+Wire Wire Line
+	2550 4650 2950 4650
+Text Label 2950 4650 2    50   ~ 0
+~CY_RESET
 Wire Bus Line
-	4350 5600 6650 5600
+	5300 4200 5300 5700
+Wire Bus Line
+	5300 5700 6650 5700
+Wire Wire Line
+	2200 5000 2950 5000
+Wire Wire Line
+	2300 5100 2950 5100
+$Sheet
+S 2950 2950 1000 2850
+U 5B68477F
+F0 "Cypress" 50
+F1 "Cypress.sch" 50
+F2 "USB_P" I L 2950 4150 50 
+F3 "USB_N" I L 2950 4250 50 
+F4 "SDA" I L 2950 5000 50 
+F5 "SCL" I L 2950 5100 50 
+F6 "~CY_RESET" I L 2950 4650 50 
+F7 "LED_ERR" I R 3950 3300 50 
+F8 "LED_ACT" I R 3950 3200 50 
+F9 "LED_FPGA" I R 3950 3100 50 
+F10 "LED_CY" I R 3950 3000 50 
+F11 "FPGA_DONE" I R 3950 3500 50 
+F12 "ENVA" I R 3950 5400 50 
+F13 "ENVB" I R 3950 5500 50 
+F14 "~FPGA_RESET" I R 3950 3600 50 
+F15 "~OEQ" I R 3950 5600 50 
+F16 "~ALERT" I R 3950 5700 50 
+F17 "FIFO_DATA_BUS" I R 3950 4400 50 
+F18 "FIFO_ADDR_BUS" I R 3950 4300 50 
+F19 "FLAGA" I R 3950 3800 50 
+F20 "FLAGB" I R 3950 3900 50 
+F21 "FLAGC" I R 3950 4000 50 
+F22 "RD" I R 3950 5100 50 
+F23 "WR" I R 3950 5000 50 
+F24 "CLKIF" I R 3950 4600 50 
+F25 "CLKREF" I R 3950 4700 50 
+F26 "FLAGD" I R 3950 4100 50 
+F27 "OE" I R 3950 5200 50 
+F28 "PKTEND" I R 3950 4900 50 
+$EndSheet
+Wire Wire Line
+	4300 4600 3950 4600
+Text Label 4000 4600 0    50   ~ 0
+CLKIF
+Text Label 4000 4700 0    50   ~ 0
+CLKREF
+Wire Wire Line
+	3950 4700 4300 4700
+Text Label 4000 5100 0    50   ~ 0
+RD
+Text Label 4000 5000 0    50   ~ 0
+WR
+Wire Wire Line
+	3950 5000 4300 5000
+Wire Wire Line
+	3950 5100 4300 5100
+Wire Wire Line
+	4300 5200 3950 5200
+Text Label 4000 5200 0    50   ~ 0
+OE
+Wire Wire Line
+	4300 3900 3950 3900
+Wire Wire Line
+	4300 4000 3950 4000
+Wire Wire Line
+	4300 4100 3950 4100
+Text Label 4000 3800 0    50   ~ 0
+FLAGA
+Text Label 4000 3900 0    50   ~ 0
+FLAGB
+Text Label 4000 4000 0    50   ~ 0
+FLAGC
+Text Label 4000 4100 0    50   ~ 0
+FLAGD
+Wire Wire Line
+	3950 3800 4300 3800
+Text Label 4000 4900 0    50   ~ 0
+PKTEND
+Wire Wire Line
+	3950 4900 4300 4900
+Wire Bus Line
+	6650 2650 6650 5700
 Wire Bus Line
 	8000 2600 8000 4800
-Wire Bus Line
-	4350 2150 4350 5600
-Wire Bus Line
-	6650 2650 6650 5600
 Wire Bus Line
 	9650 2400 9650 4800
 $EndSCHEMATC
