@@ -1,87 +1,130 @@
 import sys
 import types
 import unittest
+from collections import OrderedDict
 from bitarray import bitarray
-from ctypes import c_ubyte, c_uint64, LittleEndianStructure, Union
-
 
 __all__ = ["Bitfield"]
 
+class _Bitfield:
+    @classmethod
+    def _build_fields(cls, size_bits, fields):
+        total_width = sum(width for name, width in fields)
+        if total_width > size_bits:
+            raise ValueError("field widths exceed declared bit size (%d > %d)" % (total_width, size_bits))
+        elif total_width < size_bits:
+            fields = fields + [(None, size_bits - total_width)]
 
-class _PackedUnion(Union):
+        cls._size_bits = size_bits
+        cls._size_bytes = (size_bits + 7) // 8
+        cls._named_fields = []
+        cls._widths = OrderedDict()
+
+        bit = 0
+        for name, width in fields:
+            if name is None:
+                name = "_padding_%d" % bit
+            else:
+                cls._named_fields.append(name)
+
+            cls._create_field(name, bit, width)
+            bit += width
+
+    @classmethod
+    def _create_field(cls, name, start, width):
+        cls._widths[name] = width
+        end = start + width
+        num_bytes = (width + 7) // 8
+        max_int = (1 << width) - 1
+
+        @property
+        def getter(self):
+            return int.from_bytes(self._bits[start:end].tobytes(), "little")
+
+        @getter.setter
+        def setter(self, value):
+            if isinstance(value, bitarray):
+                assert value.length() == width
+                self._bits[start:end] = b
+            else:
+                if value > max_int:
+                    raise OverflowError("int too big to fit in %d bits" % width)
+                b = bitarray(endian="little")
+                b.frombytes(value.to_bytes(num_bytes, "little"))
+                self._bits[start:end] = b[:width]
+
+        setattr(cls, name, setter)
+
     @classmethod
     def from_int(cls, data):
-        pack = cls()
-        pack._int_ = data
-        return pack
-
-    @classmethod
-    def from_bytes(cls, data):
-        data = bytes(data)
-        pack = cls()
-        pack._bytes_[:] = data
-        return pack
+        if data >= (1 << cls._size_bits):
+            raise OverflowError("int too big to fit in %d bits" % cls._size_bits)
+        return cls.from_bytes(data.to_bytes(cls._size_bytes, "little"))
 
     @classmethod
     def from_bytearray(cls, data):
-        data = bytearray(data)
-        pack = cls()
-        pack._bytes_[:] = data
-        return pack
+        return cls.from_bytes(bytes(data))
+
+    @classmethod
+    def from_bytes(cls, data):
+        if len(data) != cls._size_bytes:
+            raise ValueError("need %d bytes to fill BitArray" % cls._size_bytes)
+        b = bitarray(endian="little")
+        b.frombytes(data)
+        return cls.from_bitarray(b[:cls._size_bits])
 
     @classmethod
     def from_bitarray(cls, data):
-        data = bitarray(data, endian="little")
-        return cls.from_bytes(data.tobytes())
-
-    def __init__(self, *args, **kwargs):
-        _, bits_cls = self._fields_[0]
-
-        arg_index = 0
-        fields = {}
-        for f_name, f_type, f_width in bits_cls._fields_:
-            if arg_index == len(args):
-                break
-
-            if not f_name.startswith("_reserved_"):
-                assert f_name not in fields
-                fields[f_name] = args[arg_index]
-                arg_index += 1
-
-        fields.update(kwargs)
-
-        super().__init__(bits_cls(**fields))
-
-    def copy(self):
-        pack = self.__class__()
-        pack._bytes_[:] = self._bytes_[:]
+        assert data.length() == cls._size_bits
+        assert data.endian() == "little"
+        pack = cls()
+        pack._bits = bitarray(data, endian="little")
         return pack
 
-    def to_int(self):
-        return self._int_
+    def __init__(self, *args, **kwargs):
+        self._bits = bitarray(self._size_bits, endian="little")
+        self._bits[:] = 0
 
-    def to_bytes(self):
-        return bytes(self._bytes_)
+        if len(args) > len(self._named_fields):
+            raise ValueError("too many arguments for field count (%d > %d)" % (len(args), len(self._named_fields)))
 
-    def to_bytearray(self):
-        return bytearray(self._bytes_)
+        for i, v in enumerate(args):
+            setattr(self, self._named_fields[i], v)
+
+        for k,v in kwargs.values():
+            if k not in self._widths:
+                raise ValueError("unknown field name %s" % k)
+            setattr(self, k, v)
 
     def to_bitarray(self):
-        data = bitarray(endian="little")
-        data.frombytes(self.to_bytes())
-        return data
+        return bitarray(self._bits, endian="little")
 
-    def bits_repr(self, omit_zero=False):
+    def to_bytes(self):
+        return self._bits.tobytes()
+
+    def to_bytearray(self):
+        return bytearray(self.to_bytes())
+
+    def to_int(self):
+        return int.from_bytes(self.to_bytes(), "little")
+
+    def copy(self):
+        return self.__class__.from_bitarray(self._bits)
+
+    def bits_repr(self, omit_zero=False, omit_padding=True):
         fields = []
-        for f_name, f_type, f_width in self._bits_._fields_:
-            if f_name.startswith("_reserved_"):
-                continue
+        if omit_padding:
+            names = self._named_fields
+        else:
+            names = self._widths.keys()
 
-            f_value = getattr(self._bits_, f_name)
+        for name in names:
+            width = self._widths[name]
+            value = getattr(self, name)
             if omit_zero and not f_value:
                 continue
 
-            fields.append("{}={:0{}b}".format(f_name, f_value, f_width))
+            fields.append("{}={:0{}b}".format(name, value, width))
 
         return " ".join(fields)
 
@@ -89,36 +132,20 @@ class _PackedUnion(Union):
         return "<{}.{} {}>".format(self.__module__, self.__class__.__name__, self.bits_repr())
 
     def __eq__(self, other):
-        return self._bytes_[:] == other._bytes_[:]
+        return self._bits[:] == other._bits[:]
 
     def __ne__(self, other):
-        return self._bytes_[:] != other._bytes_[:]
-
+        return self._bits[:] != other._bits[:]
 
 def Bitfield(name, size_bytes, fields):
     mod = sys._getframe(1).f_globals["__name__"] # see namedtuple()
+    size_bits = size_bytes * 8
 
-    reserved = 0
-    def make_reserved():
-        nonlocal reserved
-        reserved += 1
-        return "_reserved_{}".format(reserved)
+    cls = types.new_class(name, (_Bitfield,))
+    cls.__module__ = mod
+    cls._build_fields(size_bits, fields)
 
-    bits_cls = types.new_class(name + "_bits_", (LittleEndianStructure,))
-    bits_cls.__module__ = mod
-    bits_cls._packed_ = True
-    bits_cls._fields_ = [(make_reserved() if f_name is None else f_name, c_uint64, f_width)
-                         for f_name, f_width in fields]
-
-    pack_cls = types.new_class(name, (_PackedUnion,))
-    pack_cls.__module__ = mod
-    pack_cls._packed_ = True
-    pack_cls._anonymous_ = ("_bits_",)
-    pack_cls._fields_ = [("_bits_",  bits_cls),
-                         ("_bytes_", c_ubyte * size_bytes),
-                         ("_int_",   c_uint64)]
-
-    return pack_cls
+    return cls
 
 # -------------------------------------------------------------------------------------------------
 
@@ -132,7 +159,16 @@ class BitfieldTestCase(unittest.TestCase):
         self.assertEqual(x.b, 2)
 
     def test_large(self):
-        bf = Bitfield("bf", 8, [("a", 64)])
+        bf = Bitfield("bf", 9, [(None, 8), ("a", 64)])
+        val = (3 << 62) + 1
+        x = bf(val)
+        self.assertEqual(x.to_int(), val << 8)
+
+    def test_huge(self):
+        bf = Bitfield("bf", 260, [("e", 32), ("m", 2048)])
+        x = bf(65537, (30<<2048) // 31)
+        self.assertEqual(x.e, 65537)
+        self.assertEqual(x.m, (30<<2048) // 31)
 
     def test_reserved(self):
         bf = Bitfield("bf", 8, [(None, 1), ("a", 1)])
@@ -152,6 +188,13 @@ class BitfieldTestCase(unittest.TestCase):
         self.assertIsInstance(x.to_bytearray(), bytearray)
         self.assertEqual(x.to_bytearray(), bytearray(b"\x11\x00"))
         self.assertEqual(bf.from_bytearray(x.to_bytearray()), x)
+
+    def test_int(self):
+        bf = Bitfield("bf", 2, [("a", 3), ("b", 5)])
+        x = bf(1, 2)
+        self.assertIsInstance(x.to_int(), int)
+        self.assertEqual(x.to_int(), 17)
+        self.assertEqual(bf.from_int(x.to_int()), x)
 
     def test_bitaray(self):
         bf = Bitfield("bf", 2, [("a", 3), ("b", 5)])
